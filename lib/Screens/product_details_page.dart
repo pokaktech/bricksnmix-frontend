@@ -1,26 +1,26 @@
+import 'package:bricksnmix/Controller/ProductDetailsController.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ProductDetailsPage extends StatefulWidget {
-   ProductDetailsPage() ;
+class ProductDetailsPage extends StatelessWidget {
+  const ProductDetailsPage({super.key});
 
-  @override
-  _ProductDetailsPageState createState() => _ProductDetailsPageState();
-}
-
-class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
+    ProductDetailsController productDetailsController =
+        Get.put(ProductDetailsController());
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.favorite),
+            icon: const Icon(Icons.favorite),
             onPressed: () {},
           ),
         ],
@@ -39,8 +39,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   fit: BoxFit.fill,
                 ),
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Cement Bags',
                 style: TextStyle(
                   fontSize: 24,
@@ -49,33 +49,34 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               ),
               Row(
                 children: [
-                  Icon(Icons.star, color: Colors.yellow),
-                  SizedBox(width: 4),
-                  Text(
+                  const Icon(Icons.star, color: Colors.yellow),
+                  const SizedBox(width: 4),
+                  const Text(
                     '4.9',
                     style: TextStyle(fontSize: 18),
                   ),
-                  SizedBox(width: 4),
-                  Text(
+                  const SizedBox(width: 4),
+                  const Text(
                     '(374 Reviews)',
                     style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Most sold',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 8),
-              Row(
+              const SizedBox(height: 8),
+              const Row(
                 children: [
                   Text(
                     '\$3.20',
@@ -96,115 +97,124 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               Row(
                 children: [
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Text(
+                    child: const Text(
                       '-30%',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  SizedBox(width: 8),
-                  Text(
+                  const SizedBox(width: 8),
+                  const Text(
                     'Delivery in 2-3 Days',
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ],
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Description',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Container(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 color: Colors.orange[100],
-                child: Text(
+                child: const Text(
                   'Lorem ipsum dolor sit amet consectetur. Eu condimentum quisque sit posuere placerat ullamcorper at venenatis.',
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Quantity',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Row(
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
-                    child: Text('-'),
+                    onPressed: () {
+                      productDetailsController.decreaseCount();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey[300],
                       foregroundColor: Colors.black,
-                      minimumSize: Size(40, 40),
+                      minimumSize: const Size(40, 40),
                     ),
+                    child: const Text('-'),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      '2',
-                      style: TextStyle(fontSize: 18),
+                    child: Obx(
+                      () {
+                        return Text(
+                          productDetailsController.cartCount.toString(),
+                          style: const TextStyle(fontSize: 18),
+                        );
+                      },
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
-                    child: Text('+'),
+                    onPressed: () {
+                      productDetailsController.increaseCount();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey[300],
                       foregroundColor: Colors.black,
-                      minimumSize: Size(40, 40),
+                      minimumSize: const Size(40, 40),
                     ),
+                    child: const Text('+'),
                   ),
                 ],
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Reviews (374)',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Row(
                 children: [
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Text(
-                        'Add to Cart',
-                        style: TextStyle(color: Colors.orange),
-                      ),
                       style: ElevatedButton.styleFrom(
                         // backgroundColor: Colors.orange,
                         foregroundColor: Colors.white,
                       ),
+                      child: const Text(
+                        'Add to Cart',
+                        style: TextStyle(color: Colors.orange),
+                      ),
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Text('Buy Now'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
                         foregroundColor: Colors.white,
                       ),
+                      child: const Text('Buy Now'),
                     ),
                   ),
                 ],
