@@ -23,8 +23,7 @@ class CreateAccountController extends GetxController {
         },
       );
 
-      print("===========================completed=========================");
-      print(response.statusCode);
+      
       if (response.statusCode == 201) {
         debugPrint('signup successfully completed');
       } else {

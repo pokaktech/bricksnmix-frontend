@@ -128,7 +128,7 @@ class _AccountTypeState extends State<AccountType> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const Login()));
+                                        builder: (context) => Login()));
                               },
                               child: const Text(
                                 'Be a customer',

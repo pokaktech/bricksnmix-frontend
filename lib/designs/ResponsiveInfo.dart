@@ -5,6 +5,7 @@ class ResponsiveInfo {
   static bool isMobile(BuildContext context) {
     bool a = false;
     double width = MediaQuery.of(context).size.shortestSide;
+    // final width = MediaQuery.sizeOf(context);
 
     if (width < 600) {
       a = true;

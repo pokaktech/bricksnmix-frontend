@@ -29,6 +29,7 @@ class CustomTextFormfield extends StatelessWidget {
         child: TextFormField(
           obscureText: isobscure,
           controller: controller,
+          
           decoration: InputDecoration(
             contentPadding: EdgeInsets.only(left: 10, top: 10),
             border: InputBorder.none,

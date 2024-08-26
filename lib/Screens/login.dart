@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:developer';
 
 import 'package:bricksnmix/Controller/LoginController.dart';
 import 'package:bricksnmix/Screens/Account_Screen.dart';
@@ -12,7 +12,7 @@ import '../Custom_Widget/CustomTextformfield.dart';
 import '../Custom_Widget/GoogleCustomwidget.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  Login({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -20,9 +20,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  // final TextEditingController emailController = TextEditingController();
-  // final TextEditingController passwordController = TextEditingController();
-
   @override
   void initState() {
     super.initState();
@@ -30,133 +27,141 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    log("--------- rebuilding -------------");
+    final TextEditingController usernameController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
     LoginController loginController = Get.put(LoginController());
+    final anFormKey = GlobalKey<FormState>();
     return Scaffold(
       body: Stack(
         children: [
           Align(
             alignment: FractionalOffset.topLeft,
             child: Padding(
-              padding: EdgeInsets.only(
-                left: 0,
-                top: ResponsiveInfo.isMobile(context) ? 80 : 110,
-                right: 0,
+              padding: const EdgeInsets.only(
+                left: 15,
+                top: 80,
+                right: 15,
                 bottom: 0,
               ),
               child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(
-                          ResponsiveInfo.isMobile(context) ? 10 : 15),
-                      child: Text(
+                child: Form(
+                  key: anFormKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
                         "Hey, Hello 👋",
                         style: TextStyle(
-                          fontSize: ResponsiveInfo.isMobile(context) ? 28 : 33,
+                          fontSize: 28,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(
-                        ResponsiveInfo.isMobile(context) ? 10 : 15,
+                      const SizedBox(
+                        height: 10,
                       ),
-                      child: Text(
+                      const Text(
                         "Enter your credentials to access\nyour account",
                         style: TextStyle(
-                          fontSize: ResponsiveInfo.isMobile(context) ? 14 : 17,
+                          fontSize: 14,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        ResponsiveInfo.isMobile(context) ? 10 : 15,
-                        ResponsiveInfo.isMobile(context) ? 20 : 30,
-                        0,
-                        0,
+                      const SizedBox(
+                        height: 20,
                       ),
-                      child: Text(
+                      const Text(
                         "Sign in your account",
                         style: TextStyle(
-                          fontSize: ResponsiveInfo.isMobile(context) ? 14 : 17,
+                          fontSize: 14,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(
-                        ResponsiveInfo.isMobile(context) ? 10 : 15,
+                      const SizedBox(
+                        height: 20,
                       ),
-                      child: const Text("Email"),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                      const Text("Username"),
+                      const SizedBox(
+                        height: 10,
+                      ),
 
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: ResponsiveInfo.isMobile(context) ? 15 : 20,
-                        right: ResponsiveInfo.isMobile(context) ? 15 : 20,
-                        bottom: 0,
-                        top: 0,
+                      TextFormField(
+                        obscureText: false,
+                        controller: usernameController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'required';
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 16.0, horizontal: 10.0),
+                          border: InputBorder.none,
+                          filled: true,
+                          fillColor: Color.fromARGB(255, 235, 234, 234),
+                          hintText: "Enter The Username",
+                          hintStyle: TextStyle(fontSize: 13),
+                        ),
                       ),
-                      child: CustomTextFormfield(
-                        labelText: "enter the email",
-                        controller: loginController.emailController,
-                        ontap: () {},
-                        isobscure: false,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
 
-                    Padding(
-                      padding: EdgeInsets.all(
-                        ResponsiveInfo.isMobile(context) ? 10 : 15,
+                      // CustomTextFormfield(
+                      //   labelText: "Enter The Username",
+                      //   controller: usernameController,
+                      //   ontap: () {},
+                      //   isobscure: false,
+                      // ),
+                      const SizedBox(
+                        height: 10,
                       ),
-                      child: const Text("Password"),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
 
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: ResponsiveInfo.isMobile(context) ? 15 : 20,
-                        right: ResponsiveInfo.isMobile(context) ? 15 : 20,
-                        bottom: 0,
-                        top: 0,
+                      const Text("Password"),
+                      const SizedBox(
+                        height: 10,
                       ),
-                      child: CustomTextFormfield(
-                        labelText: "Enter the Password",
-                        controller: loginController.passwordController,
-                        ontap: () {},
-                        isobscure: true,
-                      ),
-                    ),
 
-                    Stack(
-                      children: [
-                        Align(
-                          alignment: FractionalOffset.center,
-                          child: Padding(
-                            padding: EdgeInsets.all(
-                              ResponsiveInfo.isMobile(context) ? 15 : 20,
-                            ),
+                      // CustomTextFormfield(
+                      //   labelText: "Enter The Password",
+                      //   controller: passwordController,
+                      //   ontap: () {},
+                      //   isobscure: true,
+                      // ),
+
+                      TextFormField(
+                        obscureText: true,
+                        controller: passwordController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'required';
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 16.0, horizontal: 10.0),
+                          border: InputBorder.none,
+                          filled: true,
+                          fillColor: Color.fromARGB(255, 235, 234, 234),
+                          hintText: "Enter The Password",
+                          hintStyle: TextStyle(fontSize: 13),
+                        ),
+                      ),
+
+                      const SizedBox(
+                        height: 20,
+                      ),
+
+                      Stack(
+                        children: [
+                          Align(
+                            alignment: FractionalOffset.center,
                             child: SizedBox(
                               width: double.infinity,
-                              height:
-                                  ResponsiveInfo.isMobile(context) ? 50 : 70,
+                              height: 50,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color.fromARGB(
@@ -164,46 +169,45 @@ class _LoginState extends State<Login> {
                                   foregroundColor: Colors.white, // foreground
                                 ),
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HomeScreen()),
-                                  );
+                                  if (anFormKey.currentState!.validate()) {
+                                    loginController.userSignIn(
+                                      usernameController.text,
+                                      passwordController.text,
+                                      context,
+                                    );
+
+                                    // Get.back();
+
+                                    usernameController.clear();
+                                    passwordController.clear();
+                                  }
                                 },
-                                child: Text(
+                                child: const Text(
                                   'SIGN IN',
-                                  style: TextStyle(
-                                    fontSize: ResponsiveInfo.isMobile(context)
-                                        ? 14
-                                        : 17,
-                                  ),
+                                  style: TextStyle(fontSize: 14),
                                 ),
                               ),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-
-                    Align(
-                      alignment: FractionalOffset.center,
-                      child: Text(
-                        "or sign in with",
-                        style: TextStyle(
-                            fontSize:
-                                ResponsiveInfo.isMobile(context) ? 12 : 15),
+                          )
+                        ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
 
-                    // SizedBox(height: 10,width: 10,),
+                      const Align(
+                        alignment: FractionalOffset.center,
+                        child: Text(
+                          "or sign in with",
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
 
-                    Padding(
-                      padding: EdgeInsets.all(
-                          ResponsiveInfo.isMobile(context) ? 10 : 15),
-                      child: Row(
+                      // SizedBox(height: 10,width: 10,),
+
+                      Row(
                         children: [
                           const SizedBox(
                             width: 20,
@@ -233,44 +237,45 @@ class _LoginState extends State<Login> {
                           )
                         ],
                       ),
-                    ),
-                    Row(
-                      children: [
-                        const SizedBox(
-                          width: 80,
-                        ),
-                        Text(
-                          "Don't Have an account?",
-                          style: TextStyle(
-                            fontSize:
-                                ResponsiveInfo.isMobile(context) ? 12 : 15,
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          const SizedBox(
+                            width: 80,
                           ),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const CreateAccount(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            "SIGN UP ",
+                          const Text(
+                            "Don't Have an account?",
                             style: TextStyle(
-                              color: Colors.orange,
-                              fontSize:
-                                  ResponsiveInfo.isMobile(context) ? 12 : 15,
+                              fontSize: 12,
                             ),
                           ),
-                        )
-                      ],
-                    ),
-                  ],
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const CreateAccount(),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              "SIGN UP ",
+                              style: TextStyle(
+                                color: Colors.orange,
+                                fontSize: 12,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
