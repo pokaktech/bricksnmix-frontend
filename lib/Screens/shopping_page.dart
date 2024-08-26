@@ -4,7 +4,7 @@ import '../Widgets/product_card.dart';
 import '../domain/Product.dart';
 
 class ShoppingPage extends StatefulWidget {
-   ShoppingPage() ;
+  ShoppingPage();
 
   @override
   _ShoppingPageState createState() => _ShoppingPageState();
@@ -62,10 +62,9 @@ class _ShoppingPageState extends State<ShoppingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:   AppBar(
+      appBar: AppBar(
         title: Column(
           children: [
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Container(
@@ -89,10 +88,13 @@ class _ShoppingPageState extends State<ShoppingPage> {
             ),
           ],
         ),
-        leading: Icon(Icons.arrow_back),
-
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
-
       body: Column(
         children: [
           SingleChildScrollView(
@@ -150,10 +152,14 @@ class _ShoppingPageState extends State<ShoppingPage> {
     return ElevatedButton(
       onPressed: () => _onFilterButtonTapped(index),
       style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.black, backgroundColor: Colors.white, side: BorderSide(
-        color: _selectedFilterIndex == index ? Colors.orange : Colors.transparent,
-        width: 2,
-      ), // Text color
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
+        side: BorderSide(
+          color: _selectedFilterIndex == index
+              ? Colors.orange
+              : Colors.transparent,
+          width: 2,
+        ), // Text color
       ),
       child: Text(text),
     );

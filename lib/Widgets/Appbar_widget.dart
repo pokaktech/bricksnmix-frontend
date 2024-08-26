@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:bricksnmix/Screens/Slidbarscreen.dart';
 import 'package:bricksnmix/Screens/cart_screen.dart';
 import 'package:bricksnmix/designs/ResponsiveInfo.dart';
@@ -18,8 +14,7 @@ class _AppbarWidgettState extends State<AppbarWidgett> {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-
+    return SizedBox(
       width: double.infinity,
       // decoration: BoxDecoration(
       //     color:const Color.fromARGB(224, 255, 255, 255),
@@ -29,16 +24,24 @@ class _AppbarWidgettState extends State<AppbarWidgett> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(width: ResponsiveInfo.isMobile(context)?15:25,),
-
-          CircleAvatar(foregroundImage: AssetImage('assets/bricksnmixlogo.jpg',),),
           SizedBox(
-            width:ResponsiveInfo.isMobile(context)? 20:30,
+            width: ResponsiveInfo.isMobile(context) ? 15 : 25,
           ),
-          Icon(Icons.location_on,color:Color.fromARGB(255, 3, 110, 57) ,),
+          const CircleAvatar(
+            foregroundImage: AssetImage(
+              'assets/bricksnmixlogo.jpg',
+            ),
+          ),
+          SizedBox(
+            width: ResponsiveInfo.isMobile(context) ? 20 : 30,
+          ),
+          const Icon(
+            Icons.location_on,
+            color: Color.fromARGB(255, 3, 110, 57),
+          ),
           DropdownButton<String>(
             value: selectedValue,
-            hint: Text('Kerala,india'),
+            hint: const Text('Kerala,india'),
             items: items.map((String item) {
               return DropdownMenuItem<String>(
                 value: item,
@@ -52,31 +55,45 @@ class _AppbarWidgettState extends State<AppbarWidgett> {
             },
           ),
           SizedBox(
-            width:ResponsiveInfo.isMobile(context)? 10:15,
+            width: ResponsiveInfo.isMobile(context) ? 10 : 15,
           ),
-          IconButton(onPressed: (){}, icon: Icon(Icons.search_rounded,color: Color.fromARGB(255, 3, 110, 57),)),
-          IconButton(onPressed: (){
-
-
-
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder:
-                    (context) =>
-                    CartScreen()
-                )
-            );
-
-
-
-          }, icon: Icon(Icons.shopping_cart,color: Color.fromARGB(255, 3, 110, 57),))
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.search_rounded,
+              color: Color.fromARGB(255, 3, 110, 57),
+            ),
+          ),
+          InkWell(
+            onTap: () => print("cart pressed"),
+            child: Icon(
+                Icons.shopping_cart,
+                color: Color.fromARGB(255, 3, 110, 57),
+              ),
+          ),
+          // IconButton(
+          //   onPressed: () {
+          //     print("pressed");
+          //     Navigator.pushReplacement(context,
+          //         MaterialPageRoute(builder:
+          //             (context) =>
+          //             CartScreen()
+          //         )
+          //     );
+          //   },
+          //   icon: const Icon(
+          //     Icons.shopping_cart,
+          //     color: Color.fromARGB(255, 3, 110, 57),
+          //   ),
+          // )
         ],
       ),
     );
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    home: AppbarWidgett(),
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(
+//     home: AppbarWidgett(),
+//   ));
+// }

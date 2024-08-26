@@ -1,3 +1,4 @@
+import 'package:bricksnmix/Screens/Account_Screen.dart';
 import 'package:bricksnmix/Screens/edit_profile.dart';
 import 'package:flutter/material.dart';
 
@@ -246,6 +247,13 @@ class _ProfileState extends State<Profile> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => EditProfile(),
+                              ),
+                            );
+                          } else if (index == 4) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CreateAccount(),
                               ),
                             );
                           }

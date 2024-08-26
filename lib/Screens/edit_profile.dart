@@ -21,7 +21,13 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(
               fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
         ),
-        leading: Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
