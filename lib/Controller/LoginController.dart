@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
+  final dio = Dio();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   RxBool obscure = false.obs;
-  final dio = Dio();
 
   Future<void> userSignIn(pUsername, pPassword) async {
     try {

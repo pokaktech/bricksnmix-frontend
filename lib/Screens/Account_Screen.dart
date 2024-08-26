@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:bricksnmix/Controller/CreateAccount.dart';
 import 'package:bricksnmix/Custom_Widget/CustomTextformfield.dart';
 import 'package:bricksnmix/Custom_Widget/GoogleCustomwidget.dart';
@@ -137,6 +139,17 @@ class _CreateAccountState extends State<CreateAccount> {
                     foregroundColor: Colors.white, // foreground
                   ),
                   onPressed: () {
+                    signupController.userSignup(
+                      signupController.usernameController.text,
+                      signupController.emailController.text,
+                      signupController.passwordController.text,
+                    );
+
+                    signupController.usernameController.clear();
+                    signupController.emailController.clear();
+                    signupController.passwordController.clear();
+                    signupController.confirmPasswordController.clear();
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
