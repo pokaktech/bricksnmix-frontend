@@ -1,3 +1,4 @@
+import 'package:bricksnmix/Controller/HomeController.dart';
 import 'package:bricksnmix/Custom_Widget/Custom_ContainerWidget.dart';
 import 'package:bricksnmix/Widgets/CategoryWidget.dart';
 import 'package:bricksnmix/Screens/Slidbarscreen.dart';
@@ -8,6 +9,9 @@ import 'package:bricksnmix/Widgets/todaysbulkdetails.dart';
 import 'package:bricksnmix/Widgets/trendingbrands.dart';
 import 'package:bricksnmix/Widgets/trendingproducts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../designs/ResponsiveInfo.dart';
 
@@ -26,6 +30,7 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
+    HomeController homeController = Get.put(HomeController());
     return Scaffold(
       body: Column(
         children: [
@@ -43,7 +48,23 @@ class _DashboardState extends State<Dashboard> {
                     height: ResponsiveInfo.isMobile(context) ? 20 : 25,
                   ),
                   CategoryWidget(),
-                  Trendingbrands(),
+                  // Trendingbrands(),
+
+                  GetBuilder(
+                      init: HomeController(),
+                      builder: (controller) {
+                        return Obx(
+                          () => controller.loading.isTrue
+                              ? Center(
+                                child: LoadingAnimationWidget.staggeredDotsWave(
+                                    color: const Color.fromARGB(229, 1, 49, 131),
+                                    size: 35,
+                                  ),
+                              )
+                              : Trendingbrands(),
+                        );
+                      }),
+
                   Trendingproducts(),
                   Todaysbulkdetails(),
                   Image.asset(
