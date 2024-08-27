@@ -25,13 +25,12 @@ class HomeController extends GetxController {
 
     try {
       loading(true);
-
       final options = Options(
         headers: {
           'Authorization': 'Bearer $token',
         },
       );
-
+// http://195.35.20.1:8080/accounts/getFastmovingProducts/
       final response = await dio.get(
         'http://195.35.20.1:8080/accounts/getTrendingBrands/',
         options: options,
