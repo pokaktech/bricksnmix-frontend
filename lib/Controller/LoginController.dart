@@ -11,9 +11,11 @@ class LoginController extends GetxController {
   RxBool obscure = false.obs;
   RxBool loginResult = false.obs;
   var errorMessage = ''.obs;
+  RxBool loading = false.obs;
 
   Future<void> userSignIn(pUsername, pPassword, context) async {
     try {
+      loading(true);
       errorMessage = ''.obs;
       final response = await dio.post(
         'http://195.35.20.1:8080/auth/jwt/create/',
@@ -24,37 +26,41 @@ class LoginController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        showDialog(
-          context: context,
-          builder: (context) => const Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
-        await Future.delayed(Duration(seconds: 5));
-        print(response.data);
-        // storeToken()
         loginResult(true);
         Get.offAll(() => HomeScreen());
       } else {
         loginResult(false);
+        Get.snackbar(
+          'Error',
+          'Login failed',
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+
         errorMessage.value = 'Login failed. Please try again.';
       }
     } on DioException catch (e) {
       if (e.response?.statusCode == 401) {
-        showDialog(
-          context: context,
-          builder: (context) => const Center(
-            child: CircularProgressIndicator(),
-          ),
+        loginResult(false);
+        Get.snackbar(
+          'Error',
+          'Login failed',
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
         );
-        await Future.delayed(Duration(seconds: 5));
-        Get.back();
-        showUnauthorizedDialog(context);
       }
     } catch (e) {
       loginResult(false);
+      Get.snackbar(
+        'Error',
+        'Login failed',
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
       errorMessage.value = 'An Error Occured';
       print(e);
+    } finally {
+      loading(false);
     }
   }
 }
