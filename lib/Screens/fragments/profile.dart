@@ -1,5 +1,6 @@
 import 'package:bricksnmix/Screens/Account_Screen.dart';
 import 'package:bricksnmix/Screens/edit_profile.dart';
+import 'package:bricksnmix/services/auth_storage.dart';
 import 'package:flutter/material.dart';
 
 import '../../designs/ResponsiveInfo.dart';
@@ -241,7 +242,7 @@ class _ProfileState extends State<Profile> {
                             ),
                           ),
                         ),
-                        onTap: () {
+                        onTap: () async {
                           if (index == 0) {
                             Navigator.push(
                               context,
@@ -250,6 +251,8 @@ class _ProfileState extends State<Profile> {
                               ),
                             );
                           } else if (index == 4) {
+                            await deleteToken();
+
                             Navigator.push(
                               context,
                               MaterialPageRoute(

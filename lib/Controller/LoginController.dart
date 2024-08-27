@@ -26,6 +26,11 @@ class LoginController extends GetxController {
       );
 
       if (response.statusCode == 200) {
+        final String accessToken = response.data['access'];
+
+        print(accessToken);
+        await storeToken(accessToken);
+
         loginResult(true);
         Get.offAll(() => HomeScreen());
       } else {
