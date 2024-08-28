@@ -34,6 +34,9 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       body: Column(
         children: [
+          const SizedBox(
+            height: 25,
+          ),
           Expanded(
             flex: 1,
             child: AppbarWidgett(),
@@ -43,27 +46,42 @@ class _DashboardState extends State<Dashboard> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Slidbar(),
+                  GetBuilder(
+                    init: HomeController(),
+                    builder: (controller) {
+                      return Obx(
+                        () => controller.loading.isTrue
+                            ? const Center(
+                                child: CircularProgressIndicator(
+                                  color: Color.fromARGB(229, 1, 49, 131),
+                                ),
+                              )
+                            : Slidbar(),
+                      );
+                    },
+                  ),
+
+                  // Slidbar(),
                   SizedBox(
                     height: ResponsiveInfo.isMobile(context) ? 20 : 25,
                   ),
                   CategoryWidget(),
-                  // Trendingbrands(),
 
                   GetBuilder(
-                      init: HomeController(),
-                      builder: (controller) {
-                        return Obx(
-                          () => controller.loading.isTrue
-                              ? Center(
+                    init: HomeController(),
+                    builder: (controller) {
+                      return Obx(
+                        () => controller.loading.isTrue
+                            ? Center(
                                 child: LoadingAnimationWidget.staggeredDotsWave(
-                                    color: const Color.fromARGB(229, 1, 49, 131),
-                                    size: 35,
-                                  ),
+                                  color: const Color.fromARGB(229, 1, 49, 131),
+                                  size: 35,
+                                ),
                               )
-                              : Trendingbrands(),
-                        );
-                      }),
+                            : Trendingbrands(),
+                      );
+                    },
+                  ),
 
                   Trendingproducts(),
                   Todaysbulkdetails(),
