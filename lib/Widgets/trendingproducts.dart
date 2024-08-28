@@ -11,13 +11,17 @@ class Trendingproducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Trendingproductscontroller trendingproductscontroller = Get.put(Trendingproductscontroller());
+    Trendingproductscontroller trendingproductscontroller =
+        Get.put(Trendingproductscontroller());
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.width / 1.25,
+      height: MediaQuery.of(context).size.width / 1.40,
       color: const Color(0xffEAFFC8),
       child: Column(
         children: [
+          const SizedBox(
+            height: 5,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,

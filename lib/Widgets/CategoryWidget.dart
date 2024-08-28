@@ -36,21 +36,21 @@ class CategoryWidget extends StatelessWidget {
     final crossAxisCount = ResponsiveInfo.isMobile(context) ? 5 : 10;
 
     return SizedBox(
+      // color: Colors.red,
+      height: 250,
       width: double.infinity,
       child: GridView.builder(
         shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(), // Disable scrolling within GridView
+        physics: const NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxisCount,
-          // crossAxisSpacing: 4.0,
-          // mainAxisSpacing: 8.0,
-          childAspectRatio: 0.7,
+          childAspectRatio: 0.85,
         ),
         itemCount: images.length,
         itemBuilder: (context, index) {
           return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 width: ResponsiveInfo.isMobile(context) ? 50 : 70,
