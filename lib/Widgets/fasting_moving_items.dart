@@ -36,6 +36,7 @@ class FastingMovingItems extends StatelessWidget {
                   crossAxisSpacing: 4.0,
                 ),
                 itemCount: 5,
+
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     child: Center(

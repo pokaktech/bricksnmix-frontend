@@ -10,7 +10,6 @@ import 'package:bricksnmix/Widgets/trendingbrands.dart';
 import 'package:bricksnmix/Widgets/trendingproducts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../designs/ResponsiveInfo.dart';
@@ -61,7 +60,6 @@ class _DashboardState extends State<Dashboard> {
                     },
                   ),
 
-                  // Slidbar(),
                   SizedBox(
                     height: ResponsiveInfo.isMobile(context) ? 20 : 25,
                   ),
@@ -83,7 +81,7 @@ class _DashboardState extends State<Dashboard> {
                     },
                   ),
 
-                  Trendingproducts(),
+                  const Trendingproducts(),
                   Todaysbulkdetails(),
                   Image.asset(
                     "assets/homecategory/hirenow.png",
@@ -96,7 +94,7 @@ class _DashboardState extends State<Dashboard> {
                     width: double.infinity,
                     height: MediaQuery.of(context).size.width / 1.75,
                   ),
-                  FastingMovingItems(),
+                  const FastingMovingItems(),
                   Image.asset(
                     "assets/homecategory/lastposter.png",
                     width: double.infinity,
