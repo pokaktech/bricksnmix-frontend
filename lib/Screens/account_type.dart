@@ -1,7 +1,9 @@
 import 'package:bricksnmix/Screens/login.dart';
 import 'package:bricksnmix/Screens/sellers_homepage.dart';
 import 'package:bricksnmix/designs/ResponsiveInfo.dart';
+import 'package:bricksnmix/generated/appColors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AccountType extends StatefulWidget {
   const AccountType({Key? key}) : super(key: key);
@@ -16,6 +18,9 @@ class _AccountTypeState extends State<AccountType> {
     return Scaffold(
       body: Column(
         children: [
+          const SizedBox(
+            height: 35,
+          ),
           Expanded(
             flex: 1,
             child: Center(
@@ -34,14 +39,18 @@ class _AccountTypeState extends State<AccountType> {
           ),
           Expanded(
             flex: 2,
-            child: Container(
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: FractionalOffset.topCenter,
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: double.infinity,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: FractionalOffset.topCenter,
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: ColorFiltered(
+                      colorFilter: const ColorFilter.mode(
+                        Appcolors.forestGreen,
+                        BlendMode.srcIn,
+                      ),
                       child: Image.asset(
                         "assets/orangebg.png",
                         width: double.infinity,
@@ -50,98 +59,84 @@ class _AccountTypeState extends State<AccountType> {
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: FractionalOffset.topLeft,
+                ),
+                Align(
+                  alignment: FractionalOffset.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 10,
+                      left: 35,
+                      right: 25,
+                      bottom: 10,
+                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              ResponsiveInfo.isMobile(context) ? 20 : 25,
-                              0,
-                              0,
-                              ResponsiveInfo.isMobile(context) ? 5 : 10),
-                          child: Text(
-                            "\nGet\nStarted",
-                            style: TextStyle(
-                                fontSize:
-                                    ResponsiveInfo.isMobile(context) ? 30 : 36,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                        const SizedBox(
+                          height: 45,
+                        ),
+                        Text(
+                          "\nGet\nStarted",
+                          style: TextStyle(
+                              fontSize:
+                                  ResponsiveInfo.isMobile(context) ? 30 : 36,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Get Started as seller or \n a customer",
+                          style: TextStyle(
+                            fontSize:
+                                ResponsiveInfo.isMobile(context) ? 14 : 15,
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              ResponsiveInfo.isMobile(context) ? 20 : 25,
-                              0,
-                              0,
-                              ResponsiveInfo.isMobile(context) ? 5 : 10),
-                          child: Text(
-                            "Get Started as seller or \n a customer",
-                            style: TextStyle(
-                                fontSize:
-                                    ResponsiveInfo.isMobile(context) ? 14 : 15,
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal),
-                          ),
+                        const SizedBox(
+                          height: 25,
                         ),
-                        Padding(
-                          padding: EdgeInsets.all(
-                              ResponsiveInfo.isMobile(context) ? 20 : 25),
+                        InkWell(
+                          onTap: () {
+                            Get.offAll(() => const Login());
+                          },
                           child: Container(
+                            height: 45,
                             width: double.infinity,
-                            height: ResponsiveInfo.isMobile(context) ? 50 : 60,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    Color(0xffcdcdca), // background
-                                foregroundColor: Colors.white, // foreground
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            SellersHomepage()));
-                              },
+                            decoration: BoxDecoration(
+                              color: Appcolors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Center(
                               child: Text(
-                                'Be a seller',
-                                style: TextStyle(color: Color(0xffff6624)),
+                                "Get Started",
+                                style: TextStyle(
+                                  color: Appcolors.forestGreen,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.all(
-                              ResponsiveInfo.isMobile(context) ? 20 : 25),
-                          child: Container(
-                            width: double.infinity,
-                            height: ResponsiveInfo.isMobile(context) ? 50 : 60,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    Color(0xffcdcdca), // background
-                                foregroundColor: Colors.white, // foreground
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()));
-                              },
-                              child: const Text(
-                                'Be a customer',
-                                style: TextStyle(color: Color(0xffff6624)),
-                              ),
+                        const SizedBox(
+                          height: 35,
+                        ),
+                        const Center(
+                          child: Text(
+                            "BUILDNMIX",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

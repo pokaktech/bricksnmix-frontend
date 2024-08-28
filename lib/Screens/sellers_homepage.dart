@@ -23,18 +23,12 @@ class _SellersHomepageState extends State<SellersHomepage> {
               child: Column(
                 children: [
                   Expanded(
+                    flex: 1,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // buildSection(
-                        //   'Find more customers.',
-                        //   'images/findcustomer.png', // replace with your actual image path
-                        // ),
-                        // buildSection(
-                        //   'Increase Sales.',
-                        //   'images/increase sales.png', // replace with your actual image path
-                        // ),
-                        Expanded(child:    Image.asset("assets/homecategory/findcustomers.png"),flex: 1,)
+                        
+                        Expanded(flex: 1,child:    Image.asset("assets/homecategory/findcustomers.png"),)
                         ,
 
                         Expanded(child: Container(
@@ -62,7 +56,6 @@ class _SellersHomepageState extends State<SellersHomepage> {
                         ,
                       ],
                     ),
-                    flex: 1,
                   ),
                   Expanded(
                     child: Row(

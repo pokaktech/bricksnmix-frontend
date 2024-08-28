@@ -58,10 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   BottomNavigationBarItem(
                     icon: ColorFiltered(
                       colorFilter: ColorFilter.mode(
-                          (_selectedIndex == 0)
-                              ? const Color(0xffff6624)
-                              : Colors.black26,
-                          BlendMode.srcIn),
+                        (_selectedIndex == 0)
+                            ? const Color(0xffff6624)
+                            : Colors.black26,
+                        BlendMode.srcIn,
+                      ),
                       child: Image.asset(
                         "assets/icons/home.png",
                         width: ResponsiveInfo.isMobile(context) ? 30 : 40,

@@ -53,5 +53,6 @@ class Assets {
   static const String iconsLogout = 'assets/icons/logout.png';
   static const String iconsProfile = 'assets/icons/profile.png';
   static const String iconsSettings = 'assets/icons/settings.png';
+  static const String getStartedImage = 'assets/getStartedPageImg.png';
 
 }
