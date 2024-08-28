@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bricksnmix/Controller/LoginController.dart';
 import 'package:bricksnmix/Screens/Account_Screen.dart';
+import 'package:bricksnmix/generated/appColors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -63,9 +64,9 @@ class _LoginState extends State<Login> {
                       const Text(
                         "Hey, Hello 👋",
                         style: TextStyle(
-                          fontSize: 28,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                          color: Appcolors.black,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -73,7 +74,7 @@ class _LoginState extends State<Login> {
                         "Enter your credentials to access\nyour account",
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.black,
+                          color: Appcolors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -81,9 +82,9 @@ class _LoginState extends State<Login> {
                       const Text(
                         "Sign in your account",
                         style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 26,
+                          color: Appcolors.black,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -100,10 +101,12 @@ class _LoginState extends State<Login> {
                         },
                         decoration: const InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
-                              vertical: 16.0, horizontal: 10.0),
+                            vertical: 16.0,
+                            horizontal: 10.0,
+                          ),
                           border: InputBorder.none,
                           filled: true,
-                          fillColor: Color.fromARGB(255, 235, 234, 234),
+                          fillColor: Appcolors.white,
                           hintText: "Enter The Username",
                           hintStyle: TextStyle(fontSize: 13),
                         ),
@@ -120,7 +123,7 @@ class _LoginState extends State<Login> {
                             child: const Text(
                               "Forgot Password?",
                               style: TextStyle(
-                                color: Color.fromARGB(255, 235, 94, 39),
+                                color: Appcolors.forestGreen,
                               ),
                             ),
                           ),
@@ -141,7 +144,7 @@ class _LoginState extends State<Login> {
                               vertical: 16.0, horizontal: 10.0),
                           border: InputBorder.none,
                           filled: true,
-                          fillColor: const Color.fromARGB(255, 235, 234, 234),
+                          fillColor: Appcolors.white,
                           hintText: "Enter The Password",
                           hintStyle: const TextStyle(fontSize: 13),
                           suffixIcon: IconButton(
@@ -160,7 +163,7 @@ class _LoginState extends State<Login> {
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.done,
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 35),
                       Stack(
                         children: [
                           Align(
@@ -171,9 +174,8 @@ class _LoginState extends State<Login> {
                               child: Obx(
                                 () => ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color.fromARGB(
-                                        255, 235, 94, 39), // background
-                                    foregroundColor: Colors.white, // foreground
+                                    backgroundColor: Appcolors.forestGreen,
+                                    foregroundColor: Appcolors.white,
                                   ),
                                   onPressed: loginController.loading.isTrue
                                       ? null
@@ -191,13 +193,20 @@ class _LoginState extends State<Login> {
                                       ? const CircularProgressIndicator()
                                       : const Text(
                                           'SIGN IN',
-                                          style: TextStyle(fontSize: 14),
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Appcolors.white,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
                                 ),
                               ),
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(
+                        height: 35,
                       ),
                       const Align(
                         alignment: FractionalOffset.center,
@@ -208,10 +217,11 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 35),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const SizedBox(width: 20),
+                          // const SizedBox(width: 20),
                           InkWell(
                             onTap: () {
                               print("button tapped");
@@ -223,28 +233,36 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                           ),
-                          Googlecustomwidgett(
-                            Image: Image.asset(
-                              'assets/facebook.....-removebg-preview.png',
-                              width: 37,
+                          InkWell(
+                            onTap: () {},
+                            child: Googlecustomwidgett(
+                              Image: Image.asset(
+                                'assets/facebook.....-removebg-preview.png',
+                                width: 37,
+                              ),
                             ),
                           ),
-                          Googlecustomwidgett(
-                            Image: Image.asset(
-                              'assets/twitter...-removebg-preview.png',
-                              width: 37,
+                          InkWell(
+                            onTap: () {},
+                            child: Googlecustomwidgett(
+                              Image: Image.asset(
+                                'assets/twitter...-removebg-preview.png',
+                                width: 37,
+                              ),
                             ),
                           )
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 35),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const SizedBox(width: 80),
+                          // const SizedBox(width: 80),
                           const Text(
                             "Don't Have an account?",
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                           TextButton(
@@ -259,8 +277,9 @@ class _LoginState extends State<Login> {
                             child: const Text(
                               "SIGN UP ",
                               style: TextStyle(
-                                color: Colors.orange,
-                                fontSize: 12,
+                                color: Appcolors.forestGreen,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ),
