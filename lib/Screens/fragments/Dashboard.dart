@@ -88,7 +88,7 @@ class _DashboardState extends State<Dashboard> {
                     width: double.infinity,
                     height: MediaQuery.of(context).size.width / 1.75,
                   ),
-                  TodaysSpecialOffer(),
+                  const TodaysSpecialOffer(),
                   Image.asset(
                     "assets/homecategory/rewardpoints.png",
                     width: double.infinity,
