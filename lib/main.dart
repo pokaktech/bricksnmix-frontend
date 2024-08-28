@@ -6,10 +6,10 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  // // WidgetsFlutterBinding.ensureInitialized(); 
+  // // WidgetsFlutterBinding.ensureInitialized();
   // await dotenv.load(fileName: ".env");
   //   print(dotenv.env['SERVER_URL']);
-print("-----------------------------------");
+  print("-----------------------------------");
   runApp(const MyApp());
 }
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Splash(),
+      home: const Splash(),
     );
   }
 }

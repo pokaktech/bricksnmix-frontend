@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:bricksnmix/Controller/LoginController.dart';
 import 'package:bricksnmix/Screens/Account_Screen.dart';
-import 'package:bricksnmix/Screens/getStartedPage.dart';
 import 'package:bricksnmix/generated/appColors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -209,17 +208,12 @@ class _LoginState extends State<Login> {
                       const SizedBox(
                         height: 35,
                       ),
-                      InkWell(
-                        onTap: () {
-                          Get.offAll(() => const Getstartedpage());
-                        },
-                        child: const Align(
-                          alignment: FractionalOffset.center,
-                          child: Text(
-                            "or sign in with",
-                            style: TextStyle(
-                              fontSize: 12,
-                            ),
+                      const Align(
+                        alignment: FractionalOffset.center,
+                        child: Text(
+                          "or sign in with",
+                          style: TextStyle(
+                            fontSize: 12,
                           ),
                         ),
                       ),
