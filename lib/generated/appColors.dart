@@ -5,5 +5,6 @@ class Appcolors {
   static const forestGreen = Color(0xFF05BF02);
   static const black = Colors.black;
   static const white = Color.fromARGB(255, 235, 234, 234);
+  static const headerLineColor = Color.fromARGB(255, 221, 221, 221);
 
 }
