@@ -6,5 +6,6 @@ class Appcolors {
   static const black = Colors.black;
   static const white = Color.fromARGB(255, 235, 234, 234);
   static const headerLineColor = Color.fromARGB(255, 221, 221, 221);
-
+  static const textfieldColor = Color(0xffF0F2F5);
+  static const textGrey = Color(0xff6F6F6F);
 }

@@ -44,6 +44,7 @@ class _ProfileState extends State<Profile> {
       appBar: BaseAppBar(
         appBar: AppBar(),
         title: const Text("Profile"),
+        centerResult: false,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
