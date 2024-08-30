@@ -1,11 +1,14 @@
 import 'package:bricksnmix/Screens/Slidbarscreen.dart';
 import 'package:bricksnmix/Screens/cart_screen.dart';
 import 'package:bricksnmix/designs/ResponsiveInfo.dart';
+import 'package:bricksnmix/generated/appColors.dart';
 import 'package:flutter/material.dart';
 
 class AppbarWidgett extends StatefulWidget {
+  const AppbarWidgett({super.key});
+
   @override
-  _AppbarWidgettState createState() => _AppbarWidgettState();
+  State<AppbarWidgett> createState() => _AppbarWidgettState();
 }
 
 class _AppbarWidgettState extends State<AppbarWidgett> {
@@ -14,18 +17,17 @@ class _AppbarWidgettState extends State<AppbarWidgett> {
 
   @override
   Widget build(BuildContext context) {
+    var screeenSize = MediaQuery.of(context).size;
+    var width = screeenSize.width;
+    var height = screeenSize.height;
     return SizedBox(
       width: double.infinity,
-      // decoration: BoxDecoration(
-      //     color:const Color.fromARGB(224, 255, 255, 255),
-      //     borderRadius: BorderRadius.circular(60)
-      // ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            width: ResponsiveInfo.isMobile(context) ? 15 : 25,
+            width: width * 0.08,
           ),
           const CircleAvatar(
             foregroundImage: AssetImage(
@@ -33,11 +35,11 @@ class _AppbarWidgettState extends State<AppbarWidgett> {
             ),
           ),
           SizedBox(
-            width: ResponsiveInfo.isMobile(context) ? 20 : 30,
+            width: width * 0.10,
           ),
           const Icon(
             Icons.location_on,
-            color: Color.fromARGB(255, 3, 110, 57),
+            color: Appcolors.forestGreen,
           ),
           DropdownButton<String>(
             value: selectedValue,
@@ -55,45 +57,27 @@ class _AppbarWidgettState extends State<AppbarWidgett> {
             },
           ),
           SizedBox(
-            width: ResponsiveInfo.isMobile(context) ? 10 : 15,
+            width: width * 0.06,
           ),
           IconButton(
             onPressed: () {},
             icon: const Icon(
               Icons.search_rounded,
-              color: Color.fromARGB(255, 3, 110, 57),
+              color: Appcolors.black,
             ),
+          ),
+          SizedBox(
+            width: width * 0.03,
           ),
           InkWell(
             onTap: () => print("cart pressed"),
-            child: Icon(
-                Icons.shopping_cart,
-                color: Color.fromARGB(255, 3, 110, 57),
-              ),
+            child: const Icon(
+              Icons.shopping_cart,
+              color: Appcolors.black,
+            ),
           ),
-          // IconButton(
-          //   onPressed: () {
-          //     print("pressed");
-          //     Navigator.pushReplacement(context,
-          //         MaterialPageRoute(builder:
-          //             (context) =>
-          //             CartScreen()
-          //         )
-          //     );
-          //   },
-          //   icon: const Icon(
-          //     Icons.shopping_cart,
-          //     color: Color.fromARGB(255, 3, 110, 57),
-          //   ),
-          // )
         ],
       ),
     );
   }
 }
-
-// void main() {
-//   runApp(MaterialApp(
-//     home: AppbarWidgett(),
-//   ));
-// }

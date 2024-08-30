@@ -1,9 +1,9 @@
 import 'package:bricksnmix/Controller/HomeController.dart';
-import 'package:bricksnmix/Custom_Widget/Custom_ContainerWidget.dart';
-import 'package:bricksnmix/Widgets/CategoryWidget.dart';
 import 'package:bricksnmix/Screens/Slidbarscreen.dart';
 import 'package:bricksnmix/Widgets/Appbar_widget.dart';
 import 'package:bricksnmix/Widgets/fasting_moving_items.dart';
+import 'package:bricksnmix/Widgets/home_sections/category_widget.dart';
+import 'package:bricksnmix/Widgets/home_sections/user_role_buttons.dart';
 import 'package:bricksnmix/Widgets/todays_special_offer.dart';
 import 'package:bricksnmix/Widgets/todaysbulkdetails.dart';
 import 'package:bricksnmix/Widgets/trendingbrands.dart';
@@ -36,7 +36,7 @@ class _DashboardState extends State<Dashboard> {
           const SizedBox(
             height: 25,
           ),
-          Expanded(
+          const Expanded(
             flex: 1,
             child: AppbarWidgett(),
           ),
@@ -45,6 +45,7 @@ class _DashboardState extends State<Dashboard> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  const UserRoleButtons(),
                   GetBuilder(
                     init: HomeController(),
                     builder: (controller) {
@@ -59,12 +60,10 @@ class _DashboardState extends State<Dashboard> {
                       );
                     },
                   ),
-
                   SizedBox(
                     height: ResponsiveInfo.isMobile(context) ? 20 : 25,
                   ),
                   CategoryWidget(),
-
                   GetBuilder(
                     init: HomeController(),
                     builder: (controller) {
@@ -80,7 +79,6 @@ class _DashboardState extends State<Dashboard> {
                       );
                     },
                   ),
-
                   const Trendingproducts(),
                   Todaysbulkdetails(),
                   Image.asset(
