@@ -12,8 +12,7 @@ class Profile extends StatefulWidget {
   const Profile({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _ProfileState createState() => _ProfileState();
+  State<Profile> createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
@@ -191,62 +190,59 @@ class _ProfileState extends State<Profile> {
             padding: EdgeInsets.all(
               ResponsiveInfo.isMobile(context) ? 15 : 20,
             ),
-            child: Expanded(
-              flex: 3,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Account Settings",
-                      style: TextStyle(
-                          fontSize: ResponsiveInfo.isMobile(context) ? 17 : 20,
-                          color: Colors.black87,
-                          fontWeight: FontWeight.bold),
-                    ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Account Settings",
+                    style: TextStyle(
+                        fontSize: ResponsiveInfo.isMobile(context) ? 17 : 20,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold),
                   ),
-                  ListView.builder(
-                    itemCount: arrmenus.length,
-                    shrinkWrap: true,
-                    primary: false,
-                    itemBuilder: (BuildContext context, int index) {
-                      return GestureDetector(
-                        child: ListTile(
-                          leading: Image.asset(
-                            arricons[index],
-                            width: ResponsiveInfo.isMobile(context) ? 25 : 30,
-                            height: ResponsiveInfo.isMobile(context) ? 25 : 30,
-                          ),
-                          title: Text(
-                            arrmenus[index],
-                            style: TextStyle(
-                              fontSize:
-                                  ResponsiveInfo.isMobile(context) ? 15 : 17,
-                              color: Colors.black,
-                            ),
+                ),
+                ListView.builder(
+                  itemCount: arrmenus.length,
+                  shrinkWrap: true,
+                  primary: false,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      child: ListTile(
+                        leading: Image.asset(
+                          arricons[index],
+                          width: ResponsiveInfo.isMobile(context) ? 25 : 30,
+                          height: ResponsiveInfo.isMobile(context) ? 25 : 30,
+                        ),
+                        title: Text(
+                          arrmenus[index],
+                          style: TextStyle(
+                            fontSize:
+                                ResponsiveInfo.isMobile(context) ? 15 : 17,
+                            color: Colors.black,
                           ),
                         ),
-                        onTap: () async {
-                          if (index == 0) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => EditProfile(),
-                              ),
-                            );
-                          } else if (index == 4) {
-                            await deleteToken();
+                      ),
+                      onTap: () async {
+                        if (index == 0) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EditProfile(),
+                            ),
+                          );
+                        } else if (index == 4) {
+                          await deleteToken();
 
-                            Get.offAll(() => const CreateAccount());
-                          }
-                        },
-                      );
-                    },
-                  ),
-                ],
-              ),
+                          Get.offAll(() => const CreateAccount());
+                        }
+                      },
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ],

@@ -2,7 +2,7 @@ import 'package:bricksnmix/Const/Colors.dart';
 import 'package:bricksnmix/designs/ResponsiveInfo.dart';
 import 'package:flutter/material.dart';
 
-class CategoryWidget extends StatelessWidget {
+class CategorySection extends StatelessWidget {
   final List<String> images = [
     'masonry-removebg-preview.png',
     'ConcreateReady-removebg-preview.png',
@@ -29,7 +29,7 @@ class CategoryWidget extends StatelessWidget {
     'White wood'
   ];
 
-  CategoryWidget({super.key});
+  CategorySection({super.key});
 
   @override
   Widget build(BuildContext context) {

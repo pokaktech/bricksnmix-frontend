@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bricksnmix/Controller/LoginController.dart';
 import 'package:bricksnmix/Screens/Account_Screen.dart';
+import 'package:bricksnmix/Screens/Home.dart';
 import 'package:bricksnmix/generated/appColors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -176,6 +177,8 @@ class _LoginState extends State<Login> {
                                     backgroundColor: Appcolors.forestGreen,
                                     foregroundColor: Appcolors.white,
                                   ),
+                                  // onPressed: () =>
+                                  //     Get.offAll(() => const HomeScreen()),
                                   onPressed: loginController.loading.isTrue
                                       ? null
                                       : () async {

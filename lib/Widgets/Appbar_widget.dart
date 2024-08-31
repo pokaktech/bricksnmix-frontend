@@ -1,4 +1,3 @@
-import 'package:bricksnmix/Screens/Slidbarscreen.dart';
 import 'package:bricksnmix/Screens/cart_screen.dart';
 import 'package:bricksnmix/designs/ResponsiveInfo.dart';
 import 'package:bricksnmix/generated/appColors.dart';

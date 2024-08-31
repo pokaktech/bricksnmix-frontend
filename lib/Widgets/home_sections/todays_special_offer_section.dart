@@ -1,27 +1,22 @@
-import 'package:bricksnmix/Controller/TrendingProductsController.dart';
-import 'package:bricksnmix/backup.dart';
+import 'package:bricksnmix/Controller/TodaysSpecialOfferController.dart';
+import 'package:bricksnmix/Screens/product_details_page.dart';
+import 'package:bricksnmix/designs/ResponsiveInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Screens/product_details_page.dart';
-import '../designs/ResponsiveInfo.dart';
-
-class Trendingproducts extends StatelessWidget {
-  const Trendingproducts({super.key});
+class TodaysSpecialOfferSection extends StatelessWidget {
+  const TodaysSpecialOfferSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Trendingproductscontroller trendingproductscontroller =
-        Get.put(Trendingproductscontroller());
+    Todaysspecialoffercontroller todaysspecialoffercontroller =
+        Get.put(Todaysspecialoffercontroller());
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.width / 1.40,
-      color: const Color(0xffEAFFC8),
+      height: MediaQuery.of(context).size.width / 1.45,
+      color: const Color(0xffFFCF86),
       child: Column(
         children: [
-          const SizedBox(
-            height: 5,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,24 +25,25 @@ class Trendingproducts extends StatelessWidget {
                 padding:
                     EdgeInsets.all(ResponsiveInfo.isMobile(context) ? 8 : 12),
                 child: Text(
-                  "Trending Products",
+                  "Today’s Special Offer",
                   maxLines: 1,
                   style: TextStyle(
                     fontSize: ResponsiveInfo.isMobile(context) ? 17 : 20,
                     fontWeight: FontWeight.bold,
+                    color: const Color(0xffB6545A),
                   ),
                   textAlign: TextAlign.center,
                 ),
               ),
               InkWell(
                 onTap: () {
-                  trendingproductscontroller.scrollToRight();
+                  todaysspecialoffercontroller.scrollToRight();
                 },
                 child: Padding(
                   padding:
                       EdgeInsets.all(ResponsiveInfo.isMobile(context) ? 8 : 12),
                   child: Image.asset(
-                    'assets/homecategory/rightcirclearrow.png',
+                    'assets/homecategory/redarrow.png',
                     width: 30,
                     height: 30,
                     fit: BoxFit.fill,
@@ -66,7 +62,7 @@ class Trendingproducts extends StatelessWidget {
               width: double.infinity,
               height: ResponsiveInfo.isMobile(context) ? 200 : 220,
               child: ListView(
-                controller: trendingproductscontroller.scrollController,
+                controller: todaysspecialoffercontroller.scrollController,
                 scrollDirection: Axis.horizontal,
                 padding: EdgeInsets.fromLTRB(
                   ResponsiveInfo.isMobile(context) ? 10 : 15,
@@ -136,7 +132,8 @@ class Trendingproducts extends StatelessWidget {
                                             ),
                                             borderRadius:
                                                 const BorderRadius.all(
-                                                    Radius.circular(5)),
+                                              Radius.circular(5),
+                                            ),
                                           ),
                                           child: Text(
                                             "-11%",
@@ -223,7 +220,7 @@ class Trendingproducts extends StatelessWidget {
                                             ),
                                           ),
                                         ],
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),

@@ -1,10 +1,9 @@
 import 'package:bricksnmix/Screens/product_details_page.dart';
+import 'package:bricksnmix/designs/ResponsiveInfo.dart';
 import 'package:flutter/material.dart';
 
-import '../designs/ResponsiveInfo.dart';
-
-class FastingMovingItems extends StatelessWidget {
-  const FastingMovingItems({super.key});
+class FastingMovingItemsSection extends StatelessWidget {
+  const FastingMovingItemsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,6 @@ class FastingMovingItems extends StatelessWidget {
                   crossAxisSpacing: 4.0,
                 ),
                 itemCount: 5,
-
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     child: Center(

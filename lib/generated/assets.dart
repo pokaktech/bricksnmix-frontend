@@ -54,5 +54,8 @@ class Assets {
   static const String iconsProfile = 'assets/icons/profile.png';
   static const String iconsSettings = 'assets/icons/settings.png';
   static const String getStartedImage = 'assets/getStartedPageImg.png';
+  static const String nearestSuppliersTestImg = 'assets/nearest_supplier_test_img.png';
+  static const String minusSign = 'assets/minus.png';
+  static const String plusSign = 'assets/plus.png';
 
 }

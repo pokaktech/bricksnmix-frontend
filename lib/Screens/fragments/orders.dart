@@ -15,19 +15,6 @@ class _OrdersState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: BottomNavigationBar(
-      //   selectedItemColor: Colors.orange,
-      //
-      //
-      //   currentIndex: 0,
-      //   items: const [
-      //     BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.grey,), label: 'Home',),
-      //     BottomNavigationBarItem(icon: Icon(Icons.category,color: Colors.grey,), label: 'Categories'),
-      //     BottomNavigationBarItem(icon: Icon(Icons.shopping_cart,color: Colors.grey,), label: 'Orders'),
-      //     BottomNavigationBarItem(icon: Icon(Icons.person,color: Colors.grey,), label: 'Profile'),
-      //   ],
-      // ),
-
       appBar: BaseAppBar(
         appBar: AppBar(),
         title: const Text(
@@ -56,16 +43,14 @@ class _OrdersState extends State<Orders> {
                       border: Border.all(
                         color: Colors.black26,
                       ),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(10)),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                       color: Colors.white,
                     ),
                     width: double.infinity,
                     height: ResponsiveInfo.isMobile(context) ? 50 : 60,
                     child: TextField(
                       style: TextStyle(
-                          fontSize:
-                              ResponsiveInfo.isMobile(context) ? 14 : 17),
+                          fontSize: ResponsiveInfo.isMobile(context) ? 14 : 17),
                       decoration: InputDecoration(
                         suffixIcon: Icon(
                           Icons.search,
@@ -100,8 +85,7 @@ class _OrdersState extends State<Orders> {
                           child: Image.asset(
                             "assets/homecategory/settings.png",
                             width: ResponsiveInfo.isMobile(context) ? 25 : 35,
-                            height:
-                                ResponsiveInfo.isMobile(context) ? 25 : 35,
+                            height: ResponsiveInfo.isMobile(context) ? 25 : 35,
                           ),
                         ),
                       )

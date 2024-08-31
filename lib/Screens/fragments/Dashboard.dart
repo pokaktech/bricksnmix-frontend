@@ -1,17 +1,17 @@
 import 'package:bricksnmix/Controller/HomeController.dart';
-import 'package:bricksnmix/Screens/Slidbarscreen.dart';
 import 'package:bricksnmix/Widgets/Appbar_widget.dart';
-import 'package:bricksnmix/Widgets/fasting_moving_items.dart';
-import 'package:bricksnmix/Widgets/home_sections/category_widget.dart';
+import 'package:bricksnmix/Widgets/home_sections/category_section.dart';
+import 'package:bricksnmix/Widgets/home_sections/fast_moving_items_section.dart';
+import 'package:bricksnmix/Widgets/home_sections/nearest_suppliers.dart';
+import 'package:bricksnmix/Widgets/home_sections/slideBar_section.dart';
+import 'package:bricksnmix/Widgets/home_sections/todays_bulk_details_sections.dart';
+import 'package:bricksnmix/Widgets/home_sections/todays_special_offer_section.dart';
+import 'package:bricksnmix/Widgets/home_sections/trending_brand_section.dart';
+import 'package:bricksnmix/Widgets/home_sections/trending_products_sections.dart';
 import 'package:bricksnmix/Widgets/home_sections/user_role_buttons.dart';
-import 'package:bricksnmix/Widgets/todays_special_offer.dart';
-import 'package:bricksnmix/Widgets/todaysbulkdetails.dart';
-import 'package:bricksnmix/Widgets/trendingbrands.dart';
-import 'package:bricksnmix/Widgets/trendingproducts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-
 import '../../designs/ResponsiveInfo.dart';
 
 class Dashboard extends StatefulWidget {
@@ -30,6 +30,9 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.put(HomeController());
+    var screeenSize = MediaQuery.of(context).size;
+    var width = screeenSize.width;
+    var height = screeenSize.height;
     return Scaffold(
       body: Column(
         children: [
@@ -46,6 +49,10 @@ class _DashboardState extends State<Dashboard> {
               child: Column(
                 children: [
                   const UserRoleButtons(),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                  const NearestSuppliers(),
                   GetBuilder(
                     init: HomeController(),
                     builder: (controller) {
@@ -56,14 +63,14 @@ class _DashboardState extends State<Dashboard> {
                                   color: Color.fromARGB(229, 1, 49, 131),
                                 ),
                               )
-                            : Slidbar(),
+                            : const SlidebarSection(),
                       );
                     },
                   ),
                   SizedBox(
                     height: ResponsiveInfo.isMobile(context) ? 20 : 25,
                   ),
-                  CategoryWidget(),
+                  CategorySection(),
                   GetBuilder(
                     init: HomeController(),
                     builder: (controller) {
@@ -75,24 +82,24 @@ class _DashboardState extends State<Dashboard> {
                                   size: 35,
                                 ),
                               )
-                            : Trendingbrands(),
+                            : const TrendingBrandSection(),
                       );
                     },
                   ),
-                  const Trendingproducts(),
-                  Todaysbulkdetails(),
+                  const TrendingProductsSections(),
+                  TodaysBulkDetailsSections(),
                   Image.asset(
                     "assets/homecategory/hirenow.png",
                     width: double.infinity,
                     height: MediaQuery.of(context).size.width / 1.75,
                   ),
-                  const TodaysSpecialOffer(),
+                  const TodaysSpecialOfferSection(),
                   Image.asset(
                     "assets/homecategory/rewardpoints.png",
                     width: double.infinity,
                     height: MediaQuery.of(context).size.width / 1.75,
                   ),
-                  const FastingMovingItems(),
+                  const FastingMovingItemsSection(),
                   Image.asset(
                     "assets/homecategory/lastposter.png",
                     width: double.infinity,

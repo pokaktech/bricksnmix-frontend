@@ -1,5 +1,4 @@
 import 'package:bricksnmix/Screens/Home.dart';
-import 'package:bricksnmix/Widgets/unauthorized_dialog.dart';
 import 'package:bricksnmix/services/auth_storage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import 'package:get/get.dart';
 
 class LoginController extends GetxController {
   final dio = Dio();
+  // final UserService _userService = UserService();
 
   RxBool obscure = false.obs;
   RxBool loginResult = false.obs;
@@ -15,8 +15,8 @@ class LoginController extends GetxController {
 
   Future<void> userSignIn(pUsername, pPassword, context) async {
     try {
+      print("---------getted--------");
       loading(true);
-      errorMessage = ''.obs;
       final response = await dio.post(
         'http://195.35.20.1:8080/auth/jwt/create/',
         data: {
@@ -24,6 +24,8 @@ class LoginController extends GetxController {
           'password': pPassword,
         },
       );
+      
+      print("------- response---------");
 
       if (response.statusCode == 200) {
         final String accessToken = response.data['access'];
@@ -67,4 +69,18 @@ class LoginController extends GetxController {
       loading(false);
     }
   }
+
+
+  // void postUser(pUsername, pPassword, context) async {
+  //   loading(true);
+
+  //   final result = await _userService.userSignIn(pUsername, pPassword, context);
+
+  //   if (result != null) {
+  //     final String accessToken = result;
+  //     await storeToken(accessToken);
+
+  //       Get.offAll(() => const HomeScreen());
+  //   }
+  // }
 }

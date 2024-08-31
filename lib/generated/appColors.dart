@@ -12,4 +12,7 @@ class Appcolors {
   static final pastelOrange = Colors.orange[100];
   static const darkMagenta = Color(0x59566245);
   static const pureWhite = Colors.white;
+  static const navyBlue = Color(0xFF233FA3);
+  // #233FA3
+  
 }

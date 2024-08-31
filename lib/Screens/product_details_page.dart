@@ -1,5 +1,6 @@
 import 'package:bricksnmix/Controller/ProductDetailsController.dart';
 import 'package:bricksnmix/generated/appColors.dart';
+import 'package:bricksnmix/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -177,49 +178,46 @@ class ProductDetailsPage extends StatelessWidget {
                               color: Appcolors.darkMagenta,
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            child:  Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                
-                                Container(
-                                  color: Colors.red,
-                                  height: 38,
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                    Text(
-                                      "-",
-                                      style: TextStyle(
-                                        fontSize: 35,
-                                        color: Appcolors.black,
-                                      ),
-                                    ),
-                                  ],)
-                                ),
-                                SizedBox(
-                                  
-                                  height: 38,
-                                  child: Center(
-                                    child: Text(
-                                      "0",
-                                      style: TextStyle(
-                                        fontSize: 30,
-                                        color: Appcolors.black,
-                                      ),
-                                    ),
+                                InkWell(
+                                  onTap: () {
+                                    productDetailsController.decreaseCount();
+                                  },
+                                  child: Image.asset(
+                                    Assets.minusSign,
+                                    width: 15,
+                                    height: 15,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 38,
-                                  child: Center(
-                                    child: Text(
-                                      "+",
-                                      style: TextStyle(
-                                        fontSize: 30,
-                                        color: Appcolors.black,
-                                      ),
-                                    ),
+
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16.0),
+                                  child: Obx(
+                                    () {
+                                      return Text(
+                                        productDetailsController.cartCount
+                                            .toString(),
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                                
+                                InkWell(
+                                  onTap: () {
+                                    productDetailsController.increaseCount();
+                                  },
+                                  child: Image.asset(
+                                    Assets.plusSign,
+                                    width: 15,
+                                    height: 15,
                                   ),
                                 ),
                               ],

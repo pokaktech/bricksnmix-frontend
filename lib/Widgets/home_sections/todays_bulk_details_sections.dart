@@ -1,11 +1,12 @@
 import 'package:bricksnmix/Controller/BulkDealsController.dart';
+import 'package:bricksnmix/Screens/product_details_page.dart';
+import 'package:bricksnmix/designs/ResponsiveInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../Screens/product_details_page.dart';
-import '../designs/ResponsiveInfo.dart';
 
-class Todaysbulkdetails extends StatelessWidget {
-  Todaysbulkdetails({super.key});
+
+class TodaysBulkDetailsSections extends StatelessWidget {
+  TodaysBulkDetailsSections({super.key});
   List<String> datas = ['bulk1.png', 'bulk1.png'];
 
   @override

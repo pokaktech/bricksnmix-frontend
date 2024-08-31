@@ -1,9 +1,8 @@
+import 'package:bricksnmix/designs/ResponsiveInfo.dart';
 import 'package:flutter/material.dart';
 
-import '../designs/ResponsiveInfo.dart';
-
-class Trendingbrands extends StatelessWidget {
-  const Trendingbrands({super.key});
+class TrendingBrandSection extends StatelessWidget {
+  const TrendingBrandSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +55,6 @@ class Trendingbrands extends StatelessWidget {
                                   ResponsiveInfo.isMobile(context) ? 50 : 60,
                             ),
                           ),
-                         
                         ),
                         Text(
                           "Brand name",
